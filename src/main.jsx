@@ -5,6 +5,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import Home from './components/Root/Home/Home'
 import Root from './components/Root/Root'
 import ProductDetails from './components/Root/Home/Product/ProductDetails/ProductDetails'
+import Cart from './components/Root/Cart/Cart'
 
 
 const router = createBrowserRouter([
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
         path: '/product/:id',
         element: <ProductDetails />,
         loader: ({params}) => fetch(`https://dummyjson.com/products/${params.id}`)
+      },
+      {
+        path: '/cart',
+        element: <Cart />
       }
     ]
   }

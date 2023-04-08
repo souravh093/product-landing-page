@@ -1,11 +1,13 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 import Product from './Product/Product';
+import { addToDb } from '../../../../utilities/fakeDB';
 
 const Home = () => {
     const products = useLoaderData().products;
     const detailsHandler = (product) => {
         console.log(product.title)
+        addToDb(product.id)
     }
     return (
         <div className='px-24'>
@@ -35,7 +37,7 @@ const Home = () => {
                     </div>
                     <div></div>
                 </div>
-                <div className='col-span-3 grid grid-cols-3 gap-5'>
+                <div className='col-span-3 grid grid-cols-2 lg:grid-cols-3 gap-5'>
                     {
                         products.map(product => <Product detailsHandler={detailsHandler} product={product} key={product.id} />)
                     }

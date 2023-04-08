@@ -37,12 +37,14 @@ const Header = () => {
                 </div>
                 <div className='flex gap-10'>
                     <FaUserAlt className='text-3xl' />
+                    <Link to='/cart'>
                     <div className='relative'>
                         <FaShoppingBag className='text-3xl' />
                         <div className='absolute top-3 text-center right-3 bg-orange-500/90 text-white p-1 w-full rounded-full'>
                             <span>4</span>
                         </div>
                     </div>
+                    </Link>
                 </div>
             </div>
             <div className='flex bg-red-50 px-24 py-4 gap-20 text-xl'>

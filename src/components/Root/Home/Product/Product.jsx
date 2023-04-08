@@ -8,7 +8,7 @@ const Product = ({product, detailsHandler}) => {
         navigate(`product/${id}`)
     }
     return (
-    <div className="w-full bg-base-100 border rounded-md cursor-pointer" onClick={navigateDetails}>
+    <div className="w-full bg-base-100 border rounded-md cursor-pointer" >
     <figure><img className='h-52 w-full object-cover' src={thumbnail} alt="Shoes" /></figure>
     <div className='p-5'>
         <h2 className="text-xl font-semibold">{title}</h2>
@@ -23,7 +23,10 @@ const Product = ({product, detailsHandler}) => {
         </div>
         <div className='flex justify-between'>
             <h2 className='text-xl font-bold'>{price} USD</h2>
+            <div className='flex gap-1'>
             <button onClick={() => detailsHandler(product)} className="bg-green-600 px-3 py-2 rounded-xl border border-gray-700 text-white">Add to cart</button>
+            <button onClick={navigateDetails} className="bg-green-600 px-3 py-2 rounded-xl border border-gray-700 text-white">Details</button>
+            </div>
         </div>
     </div>
     </div>
