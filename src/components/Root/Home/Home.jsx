@@ -1,6 +1,12 @@
 import React from 'react';
+import { useLoaderData } from 'react-router-dom';
+import Product from './Product/Product';
 
 const Home = () => {
+    const products = useLoaderData().products;
+    const detailsHandler = (product) => {
+        console.log(product.title)
+    }
     return (
         <div className='px-24'>
             <div className='text-6xl font-bold py-10'>
@@ -29,8 +35,10 @@ const Home = () => {
                     </div>
                     <div></div>
                 </div>
-                <div className='col-span-3 bg-gray-200'>
-                    content
+                <div className='col-span-3 grid grid-cols-3 gap-5'>
+                    {
+                        products.map(product => <Product detailsHandler={detailsHandler} product={product} key={product.id} />)
+                    }
                 </div>
             </div>
         </div>

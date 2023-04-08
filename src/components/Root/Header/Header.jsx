@@ -18,9 +18,11 @@ const Header = () => {
                 </div>
             </div>
             <div className='px-24 flex justify-between h-[130px] items-center'>
+                <Link to='/'>
                 <div>
                     <h1 className='text-3xl font-bold'>FreshCom</h1>
                 </div>
+                </Link>
                 <div className='flex border items-center gap-5 px-3 rounded-lg'>
                     <div>
                         <h2 className='text-xl font-semibold'>All categories</h2>
