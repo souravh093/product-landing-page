@@ -2,10 +2,12 @@ import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 import Product from './Product/Product';
 import { addToDb } from '../../../../utilities/fakeDB';
+import { toast } from 'react-hot-toast';
 
 const Home = () => {
     const products = useLoaderData().products;
     const detailsHandler = (product) => {
+        toast.success('You are added this product.');
         console.log(product.title)
         addToDb(product.id)
     }

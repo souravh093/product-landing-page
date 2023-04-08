@@ -6,6 +6,8 @@ import Home from './components/Root/Home/Home'
 import Root from './components/Root/Root'
 import ProductDetails from './components/Root/Home/Product/ProductDetails/ProductDetails'
 import Cart from './components/Root/Cart/Cart'
+import { productsAndCartData } from './loaders/getCartAndProduct'
+import About from './components/About/About'
 
 
 const router = createBrowserRouter([
@@ -25,7 +27,12 @@ const router = createBrowserRouter([
       },
       {
         path: '/cart',
-        element: <Cart />
+        element: <Cart />,
+        loader: productsAndCartData
+      },
+      {
+        path: '/about',
+        element: <About />
       }
     ]
   }
