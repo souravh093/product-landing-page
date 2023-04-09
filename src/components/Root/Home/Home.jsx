@@ -1,14 +1,33 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import Product from './Product/Product';
 import { addToDb } from '../../../../utilities/fakeDB';
 import { toast } from 'react-hot-toast';
+import { CartContext, ProductContext } from '../Root';
 
 const Home = () => {
-    const products = useLoaderData().products;
-    const detailsHandler = (product) => {
+
+    const products = useContext(ProductContext)
+    const [cart, setCart] = useContext(CartContext)
+
+    // const products = useLoaderData().products;
+
+    const cartHandler = (product) => {
+
+        let newCart = []
+        const exists = cart.find(existingProduct => existingProduct.id === product.id)
+
+        if (!exists) {
+            product.quantity = 1
+            newCart = [...cart, product]
+        }else {
+            const rest = cart.filter( existingProduct => existingProduct.id !== product.id)
+            exists.quantity += 1
+            newCart = [...rest, exists]
+        }
+
+        setCart(newCart)
         toast.success('You are added this product.');
-        console.log(product.title)
         addToDb(product.id)
     }
     return (
@@ -41,7 +60,7 @@ const Home = () => {
                 </div>
                 <div className='col-span-3 grid grid-cols-2 lg:grid-cols-3 gap-5'>
                     {
-                        products.map(product => <Product detailsHandler={detailsHandler} product={product} key={product.id} />)
+                        products.map(product => <Product cartHandler={cartHandler} product={product} key={product.id} />)
                     }
                 </div>
             </div>

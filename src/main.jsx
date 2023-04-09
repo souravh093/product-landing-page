@@ -14,6 +14,7 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <Root />,
+    loader: productsAndCartData,
     children: [
       {
         path: '/',

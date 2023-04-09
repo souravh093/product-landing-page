@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Product = ({product, detailsHandler}) => {
+const Product = ({product, cartHandler}) => {
     const {id, title, price,  thumbnail, rating, description} = product;
     const navigate = useNavigate()
     const navigateDetails = () => {
@@ -24,7 +24,7 @@ const Product = ({product, detailsHandler}) => {
         <div className='flex justify-between'>
             <h2 className='text-xl font-bold'>{price} USD</h2>
             <div className='flex gap-1'>
-            <button onClick={() => detailsHandler(product)} className="bg-green-600 px-3 py-2 rounded-xl border border-gray-700 text-white">Add to cart</button>
+            <button onClick={() => cartHandler(product)} className="bg-green-600 px-3 py-2 rounded-xl border border-gray-700 text-white">Add to cart</button>
             <button onClick={navigateDetails} className="bg-green-600 px-3 py-2 rounded-xl border border-gray-700 text-white">Details</button>
             </div>
         </div>

@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { FaSearch, FaShoppingBag, FaUserAlt } from 'react-icons/fa';
+import { CartContext } from '../Root';
 
 const Header = () => {
+    const [cart, setCart] = useContext(CartContext)
+    console.log(cart.length)
     return (
         <div>
             <div className='px-24 flex justify-between py-3 border-b border-b-gray-300'>
@@ -41,7 +44,7 @@ const Header = () => {
                     <div className='relative'>
                         <FaShoppingBag className='text-3xl' />
                         <div className='absolute top-3 text-center right-3 bg-orange-500/90 text-white p-1 w-full rounded-full'>
-                            <span>4</span>
+                            <span>{cart.length}</span>
                         </div>
                     </div>
                     </Link>
